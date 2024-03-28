@@ -1,122 +1,350 @@
-# javascript-practice
-# Intro to TypeScript
- 
-TypeScript is an open-source programming language developed and maintained by Microsoft. It is a statically typed superset of JavaScript that compiles to plain JavaScript. TypeScript adds optional static typing to JavaScript, which allows to catch type-related errors at compile time rather than at runtime.
- 
-## The Basics:
- 
-1. **Static type-checking:**
-    Static types systems describe the shapes and behaviors of what our values will be when we run our programs. A type-checker like TypeScript uses that information and tells us when things might be going wrong.
- 
-   ```
-            const flower = 'rose'
-            flower();
-   ```
-   from the above code we may get error before we try to run the code as "This expression is not callable.Type 'String' has no call signatures."
- 
-2. **Non-exception Failures:**
-   
-   In TypeScript, non-exception failures typically refer to errors or unexpected behavior that occur during runtime due to issues such as type mismatches, null or undefined values, or logical errors. TypeScript's static type system helps catch many potential errors at compile time, but some failures may still occur during runtime.
- 
-   i.
- 
-   ```bash
-         const myData = {
-         name : 'ayesha',
-         age : 23,
-      }
-      console.log(myData.fullName);
-   ```
-   here we may get error as Property 'fullName' does not exist on type '{ name: string; age: number; }'.
-   In TypeScript, the code produces an error about fullName not being defined
- 
-   ii. Typos:
-    ```bash
-            const myFirstName= 'farhath';
-      const output = myFirstName.tolowercase();
-      console.log(output);
-   ```
-   error could me "Property 'tolowerCase' does not exist on type '"farhath"'".
- 
-   iii.uncalled functions:
-   ```bash
-            function myAge(){
-         return Math.random < 0.5;
-      }
-      console.log(myAge());
-   ```
-   Operator '<' cannot be applied to types '() => number' and 'number'. It meant to be Math.random()
- 
-   iv.basic logic errors:
-    ```bash
-      const value = Math.random() < 0.5 ? "a" : "b";
-      if (value !== "a") {
-      // ...
-      } else if (value === "b") {
-      This comparison appears to be unintentional because the types '"a"' and '"b"' have no overlap.
-      //...
-      }
-   ```
-      TypeScript's type checking, which is pointing out that the comparison in the else if block is logically impossible because if value is not equal to "a", it must be "b" according to the ternary expression that defines value.
- 
-3. **Types for Tooling**
-   
-   In TypeScript, the type-checker has the capability to verify if we're accessing the correct properties on variables and other objects. With this knowledge, it can also offer suggestions about which properties you might intend to use.
- 
-   This aspect allows TypeScript to be utilized for code editing purposes as well. The fundamental type-checker can provide real-time error messages and code completion suggestions as you type in your code editor.
- 
- 
-      ![alt text](image.png)
- 
-   TypeScript takes tooling seriously.An editor that supports TypeScript can deliver “quick fixes” to automatically fix errors, refactoring to easily re-organize code, and useful navigation features for jumping to definitions of a variable, or finding all references to a given variable. All of this is built on top of the type-checker and is fully cross-platform, so it’s likely that our editor has TypeScript support available.
- 
-4. **tsc- How to install typscript?**
-   
- -    ```bash
-       npm install -g typescript
-      ```
- 
-- Now let’s move to an empty folder and try writing a sample TypeScript program: hello.ts:
-   ```bash
-   cosole.log("Hello farhath");
-   ```
-- Now run the command
-  ```bash
-    tsc hello.ts
-   ```
- 
-- As we can see nothing had happen. It means there is no errors.so we didn’t get any output in our console since there was nothing to report.
-  But if we check we got one new file called "hello.js". That's the output when we run this command. As it Transforms it into a plain JavaScript file. and the code is also same.
-  The compiler tries to emit clean readable code that looks like something a person would write. While that’s not always so easy, TypeScript indents consistently, is mindful of when our code spans across different lines of code, and tries to keep comments around
- 
-- What if we get errors how it look.Now lets rewrite the above code
- 
-  ```bash
-      function greet(name: string, age: number){
-      console.log(`Hello ${name}, your age  is ${age}`);
-      }
-      greet('farhath');
-  ```
-  If we run tsc hello.ts again, notice that we get an error on the command line!
-  ```bash
-  Expected 2 arguments, but got 1.
-  ```
-  TypeScript is telling us we forgot to pass an argument to the greet function.
- 
-5. **Explicit Types**
-   
-    When we use explicit typing, we are telling TS exactly what type we expect the variable to be and TS will take that type only.
- 
-    ```bash
-       let myName:string;
-           myName = 'tiger';
-   ```
-   The above variable will only take string type. If we give value as number we will see error.
- 
-   ```bash
-      function greet(name: string, age: number){
-      console.log(`Hello ${name}, your age  is ${age}`);
-      }
-      greet('farhath','apple');
-   ```
-   Error: "Argument of type 'string' is not assignable to parameter of type 'number'". Here the second argument should pass with type of number as we define it as number type.
+#                                                       JAVASCRIPT STRING METHODS
+JavaScript string methods are built-in functions that operate on strings, allowing developers to manipulate, transform, or extract information from strings easily. These methods are part of the String object and can be accessed through any string variable or literal by using dot notation.
+
+**Basic string Methods**
+
+String length
+String charAt()
+String charCodeAt()
+String at()
+String [ ]
+String slice()
+String substring()
+String substr()
+String toUpperCase()
+String toLowerCase()
+String concat()
+String trim()
+String trimStart()
+String trimEnd()
+String padStart()
+String padEnd()
+String repeat()
+String replace()
+String replaceAll()
+String split()
+
+**1.JAVASCRIPT STRING LENGHT**
+
+
+JavaScript's length property for strings returns the number of characters in a string. Here's a simple explanation with a code example
+
+```bash
+let myString = "Hello, World!";
+
+let lengthOfString = myString.length;
+
+console.log("Length of the string:", lengthOfString);
+```
+
+**2.Extracting String Characters**
+
+There are 4 methods for extracting string characters:
+
+The at(position) Method
+The charAt(position) Method
+The charCodeAt(position) Method
+Using property access [] like in arrays
+
+**2.1  JavaScript String charAt()**
+
+The charAt() method in JavaScript returns the character at a specified index within a string.
+
+let myString = "Hello";
+
+let charAtIndex1 = myString.charAt(1);
+
+console.log("Character at index 1:", charAtIndex1);
+
+```bash
+let myString = "Hello";
+
+let charAtIndex1 = myString.charAt(1);
+
+console.log("Character at index 1:", charAtIndex1);
+```
+**2.2 JavaScript String charCodeAt()**
+
+The charCodeAt() method in JavaScript returns the Unicode value of the character at a specified index within a string.
+
+```bash
+
+let myString = "Hello";
+
+let charCodeAt1 = myString.charCodeAt(1);
+
+console.log("Unicode value of character at index 1:", charCodeAt1);
+```
+
+**2.3 JavaScript String at()**
+
+The at() method returns the character at a specified index (position) in a string.
+
+The at() method is supported in all modern browsers since March 2022:
+
+```bash
+const name = "W3Schools";
+let letter = name.at(2);
+
+console.log(letter);
+```
+
+**2.4 Property Acess STRING[]**
+```bash
+const name = "W3Schools";
+let letter = name[2];
+console.log(letter);
+```
+**3.Extracting String Parts**
+There are 3 methods for extracting a part of a string:
+
+slice(start, end)
+substring(start, end)
+substr(start, length)
+
+**3.1 JavaScript String slice()**
+slice() extracts a part of a string and returns the extracted part in a new string.
+```bash
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7,13);
+console.log(part);
+```
+
+**3.2 JavaScript String substring()**
+
+substring() is similar to slice().
+
+The difference is that start and end values less than 0 are treated as 0 in substring().
+```bash
+let str = "Apple, Banana, Kiwi";
+let part = str.substring(-7,13);
+console.log(part);
+```
+**3.3 JavaScript String substr()**
+
+substr() is similar to slice().
+
+The difference is that the second parameter specifies the length of the extracted part.
+
+```bash
+let str = "Apple, Banana, Kiwi";
+let part = str.substr(7,6);
+console.log(part);
+```
+**4.converting uppercase and lower case**
+A string is converted to upper case with toUpperCase():
+
+A string is converted to lower case with toLowerCase():
+
+**4.1 JavaScript String toUpperCase()**
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript String Methods</h1>
+<p>Convert string to upper case:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Hello World!</p>
+
+```bash
+<script>
+function myFunction() {
+  let text = document.getElementById("demo").innerHTML;
+  document.getElementById("demo").innerHTML =
+  text.toUpperCase();
+}
+</script>
+
+</body>
+</html>
+```
+**4.2 javascript string tolowercase()**
+```bash
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript String Methods</h1>
+<p>Convert string to lower case:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Hello World!</p>
+
+<script>
+function myFunction() {
+  let text = document.getElementById("demo").innerHTML;
+  document.getElementById("demo").innerHTML =
+  text.toLowerCase();
+}
+</script>
+
+</body>
+</html>
+```
+**5. JavaScript String concat()**
+concat() joins two or more strings
+
+```bash
+let text1 = "Hello";
+let text2 = "World!";
+let text3 = text1.concat(" ",text2);
+console.log(text3);
+```
+
+**6.javascript string trim**
+The trim() method removes whitespace from both sides of a string:'
+```bash
+let text1 = "     Hello World!     ";
+let text2 = text1.trim();
+
+console.log(text1)
+console.log(text2)
+```
+
+**6.1 javascript string trimstart()**
+
+The trimStart() method works like trim(), but removes whitespace only from the start of a string.
+
+
+
+```bash
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Strings</h1>
+<h2>The trimStart() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+let text1 = "     Hello World!     ";
+let text2 = text1.trimStart();
+
+document.getElementById("demo").innerHTML =
+"Length text1 = " + text1.length + "<br>Length text2 = " + text2.length;
+</script>
+```
+
+</body>
+</html>
+
+**6.2JavaScript String trimEnd()**
+
+The trimEnd() method works like trim(), but removes whitespace only from the end of a string
+```bash
+let text1 = "     hello     ";
+let text2 = text1.trimend();
+console.log(text1);
+console.log(text2);
+```
+
+
+**7.JavaScript String Padding**
+
+The padStart() method pads a string from the start.
+
+```bash
+let text = "5";
+text1 = text.padStart(2,"44");
+console.log(text1)
+```
+**7.1 JavaScript String padEnd()**
+The padEnd() method pads a string from the end
+
+```bash
+let text = "5";
+text1 = text.padEnd(2,"44");
+console.log(text1)
+```
+
+**8.JavaScript String repeat()**
+
+The repeat() method returns a string with a number of copies of a string.
+
+The repeat() method returns a new string.
+
+```bash
+let text = "Hello world!";
+let result = text.repeat(2);
+console.log(result);
+```
+**9.Replacing String Content**
+
+The replace() method replaces a specified value with another value in a string:
+
+To replace case insensitive, use a regular expression with an /i flag (insensitive):
+
+To replace all matches, use a regular expression with a /g flag (global match):
+
+```bash
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h1>JavaScript String Methods</h1>
+<p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Please visit Microsoft!</p>
+
+<script>
+function myFunction() {
+  let text = document.getElementById("demo").innerHTML;
+  document.getElementById("demo").innerHTML =
+  text.replace("Microsoft","W3Schools");
+}
+</script>
+
+</body>
+</html>
+```
+
+**9.1 Replace ALL()**
+
+The replaceAll() method allows you to specify a regular expression instead of a string to be replaced
+
+```bash
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Strings</h1>
+<h2>The replaceAll() Method</h2>
+
+<p>ES2021 intoduced the string method replaceAll().</p>
+
+<p id="demo"></p>
+
+<script>
+let text = "I love cats. Cats are very easy to love. Cats are very popular."
+text = text.replaceAll("Cats","Dogs");
+text = text.replaceAll("cats","dogs");
+
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
+```
+
+**10.JavaScript String split()**
+
+A string can be converted to an array with the split() method:
+```bash
+const word = "hello";
+const characters = word.split("");
+console.log(characters);
+```
+
+
+
+
+
+
+
+
