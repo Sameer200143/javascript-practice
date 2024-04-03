@@ -2,7 +2,7 @@
 JavaScript string methods are built-in functions that operate on strings, allowing developers to manipulate, transform, or extract information from strings easily. These methods are part of the String object and can be accessed through any string variable or literal by using dot notation.
 
 **Basic string Methods**
-
+sring sameer
 String length
 String charAt()
 String charCodeAt()
